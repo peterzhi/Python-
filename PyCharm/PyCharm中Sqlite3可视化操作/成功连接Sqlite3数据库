@@ -1,0 +1,5 @@
+当DB Navigator配置成功之后:
+点击左侧的DB Browser,点击"+"绿色图标下拉列表中的"SQLite";
+取适当的连接名并在"DataBase files"中找到已存在的数据库路径;
+点击"Test Connection"测试是否连接成功，提示成功则表示数据库与项目连接成功;
+最后点击"OK"。
