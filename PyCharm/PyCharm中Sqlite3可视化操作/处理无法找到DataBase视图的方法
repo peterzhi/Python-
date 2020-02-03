@@ -1,0 +1,15 @@
+由于PyCharm社区版没有自动配置DataBase Navigator,只有专业版有。
+
+如果PyCharm中View的Tool Windows无法找到DataBase有两种方法安装:
+
+  1.通过Pycharm内部设置进行安装：File →Settings→Plugins→搜索框中输入Database Navigator→下载插件→安装完成重启Pycharm。
+    一般情况下，在Database Navigator安装完成后重启Pycharm即可，但是也会存在无法下载的情况。那么，我们就需要手动安装了。
+
+  2、手动安装：打开PyCharm Plugins官网并搜索Database Navigator→确认安装的Pycharm版本
+     →下载版本对应的Database Navigator压缩包→打开PyCharm→File→Settings→Plugins
+     →点击"设置"按钮→Install Plugin from Disk→找到DBN压缩包的所在路径并确认→重启Pycharm。
+     
+     重启之后顶部显示"DB Navigator"列表栏则为安装成功。
+     
+     (PyCharm Plugins官网地址：https://plugins.jetbrains.com/pycharm)
+     (DataBase Navigator压缩包下载网址：https://plugins.jetbrains.com/plugin/1800-database-navigator/versions)
