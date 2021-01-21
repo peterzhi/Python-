@@ -8,6 +8,7 @@ Windows环境：
 2.进入环境下的scripts文件夹下输入命令执行脚本：activate
 3.在该虚拟环境下可用pip安装工具包了，比如安装Django2.0版本：pip install Django==2.0
 退出虚拟环境 ：deactivate
+查看pip安装包列表：lssitepackages
 
 管理虚拟环境:推荐virtualenvwrapper
 下载virtualenvwrapper工具：  pip install virtualenvwrapper-win
