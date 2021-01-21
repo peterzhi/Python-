@@ -10,7 +10,7 @@ Windows环境：
 退出虚拟环境 ：deactivate
 
 管理虚拟环境:推荐virtualenvwrapper
-下载virtualenvwrapper工具：  pip install virtualenvwrapper -win
+下载virtualenvwrapper工具：  pip install virtualenvwrapper-win
 创建虚拟环境：mkvirtualenv 环境名
 与直接用virtualenv创建的区别：前者在当前文件夹下创建，而后者在当前用户的envs文件夹下创建，自动进入该虚拟环境
 如果不想在默认路径创建（c:\user\envs），可以新建一个环境变量：WORKON_HOME，设置默认路径
