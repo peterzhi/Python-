@@ -56,4 +56,4 @@ VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7 and that PATH isset properly.
 [finance@finance-06 ～] $ whereis virtualenvwrapper.sh
 virtualenvwrapper: /usr/local/python/python3/bin/virtualenvwrapper.sh
 [finance@finance-06~]$ sudo vim /usr/local/python/python3/bin/virtualenvwrapper.sh
-修改后，再source ~/.bashrc
+修改后，再source ~/.bashrc 
