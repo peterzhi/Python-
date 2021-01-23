@@ -6,7 +6,7 @@ Windows环境：
 先安装virtualenv ：pip install virtualenv
 1.创建虚拟环境 ：virtualenv 环境名（如果有多个Python版本，通过命令：virtualenv -p python路径 环境名）
 2.进入环境下的scripts文件夹下输入命令执行脚本：activate
-3.在该虚拟环境下可用pip安装工具包了，比如安装Django2.0版本：pip install Django==2.0
+3.在该虚拟环境下可用pip安装包，比如安装Django2.0：pip install Django==2.0(卸载原版本，安装指明版本)
 退出虚拟环境 ：deactivate
 查看pip安装包列表：lssitepackages
 
