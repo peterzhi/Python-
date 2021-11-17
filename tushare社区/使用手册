@@ -1,1 +1,31 @@
+前提：已安装Python3.7 & pycharm
+简要的DOS命令：
+退出当前虚拟环境：deactivate
+下载virtualenvwrapper工具包：pip install virtualenvwrapper-win
+创建新环境：mkvirtualenv xxx
+列出虚拟环境：lsvirtualenv / workon
+查看配置环境的存储位置：echo %WORKON_HOME%
+查看pip安装表：lssitepackages
+更新pip：python -m pip install --upgrade pip（若更新失败先还原成安全版本：python -m ensurepip，再执行更新命令）
+——————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+1.环境中安装tushare库：
+安装tushare：pip install tushare / pip install tushare-i（若超时则用此命令）
+更新tushare：pip install tushare --upgrade
+查看版本script：import tushare   print(tushare.__version__);
+
+2.tushare社区门户的注册：
+访问Tushare社区门户（https://waditu.com），并注册账户；
+点击"个人主页"，点击"接口token"即可获取自己的token;(注：token是调取数据的唯一凭证，如发现盗用，可点击“刷新”失效之前的token。)
+
+3.调取数据：
+导包：import tushare as ts [版本>1.2.10]
+设置token：ts.set_token('xxx') [第一次/失效后调用，无需重复设置]
+初始化pro接口：pro=ts.pro_api('xxx')
+
+df = pro.trade_cal(exchange='', start_date='20180901', end_date='20181001', fields='exchange,cal_date,is_open,pretrade_date', is_open='0')
+或
+df = pro.query('trade_cal', exchange='', start_date='20180901', end_date='20181001', fields='exchange,cal_date,is_open,pretrade_date', is_open='0')
+
+Tushare的行情等时间数据，一般有两个常用参数：trade_date和ts_code(交易日期和证券代码)。如果你提取部分个股的历史数据，用ts_code参数，加上开始和结束日期方便提取数据。
+如果获取所有历史数据，用trade_date来提取，股票有3800多个，需循环3800多次，每年的交易日也就才220左右，所以效率更高。积分越高可调频率会越高。
 
