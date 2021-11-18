@@ -26,7 +26,7 @@ df = pro.trade_cal(exchange='', start_date='20180901', end_date='20181001', fiel
 或
 df = pro.query('trade_cal', exchange='', start_date='20180901', end_date='20181001', fields='exchange,cal_date,is_open,pretrade_date', is_open='0')
 
-Tushare行情等时间数据，一般有两个常用参数：trade_date和ts_code(交易日期和证券代码)。
-如果你提取部分个股的历史数据，用ts_code参数，加上开始和结束日期方便提取数据。
-如果获取所有历史数据，用trade_date，股票有3800多个，需循环3800多次，每年的交易日就220天左右，所以效率更高。
+Tushare行情等时间数据，一般有两个常用参数：trade_date和ts_code(交易日期和证券代码)
+如果提取部分个股的历史数据用ts_code，加上开始和结束日期方便提取数据。
+如果获取所有历史数据用trade_date，股票有3800多个，需循环3800多次，每年的交易日就220天左右，所以效率更高。
 
