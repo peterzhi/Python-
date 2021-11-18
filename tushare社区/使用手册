@@ -13,9 +13,11 @@
 更新tushare：pip install tushare --upgrade
 查看版本script：print(tushare.__version__);
 
+
 2.tushare社区门户的注册：
 访问Tushare社区门户（https://waditu.com），并注册账户；
 点击"个人主页"，点击"接口token"即可获取自己的token;(注：token是调取数据的唯一凭证，如发现盗用，可点击“刷新”失效之前的token。)
+
 
 3.调取数据：
 导包：import tushare as ts [版本>1.2.10]
@@ -29,4 +31,26 @@ df = pro.query('trade_cal', exchange='', start_date='20180901', end_date='201810
 Tushare行情等时间数据，一般有两个常用参数：trade_date和ts_code(交易日期和证券代码)
 如果提取部分个股的历史数据用ts_code，加上开始和结束日期方便提取数据。
 如果获取所有历史数据用trade_date，股票有3800多个，需循环3800多次，每年的交易日就220天左右，所以效率更高。
+import tushare as ts
+pro = ts.pro_api('939444dd20bfcdb58d9076ef21a3f0395d937193da1f8f000d94d20c')
+##daily()获取2020年3月25号的交易记录（120积分获取5k条data）
+#print(pro.daily(trade_date='20211112'))
+
+#trade_cal()获取20200101～20200401之间的有效交易日
+df = pro.trade_cal(exchange='SSE', is_open='1',
+                   start_date='20200101',
+                   end_date='20200401',
+                   fields='cal_date')
+
+#head()默参设置n=5，即提取前5条数据
+# print(df.head())
+# print(df['cal_date'][0])
+# print(type(df['cal_date'][0]))
+
+
+4.数据入库（MySQL）：
+请按照网上流程安装MySQL，以下是一些简单的mysql命令：
+查询mysql版本：mysqladmin --version
+开启mysql服务：net start xxx(数据库服务名称)
+
 
