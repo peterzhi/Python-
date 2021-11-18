@@ -11,7 +11,7 @@
 1.环境中安装tushare库：
 安装tushare：pip install tushare / pip install tushare-i（若超时则用此命令）
 更新tushare：pip install tushare --upgrade
-查看版本script：import tushare   print(tushare.__version__);
+查看版本script：print(tushare.__version__);
 
 2.tushare社区门户的注册：
 访问Tushare社区门户（https://waditu.com），并注册账户；
@@ -26,6 +26,7 @@ df = pro.trade_cal(exchange='', start_date='20180901', end_date='20181001', fiel
 或
 df = pro.query('trade_cal', exchange='', start_date='20180901', end_date='20181001', fields='exchange,cal_date,is_open,pretrade_date', is_open='0')
 
-Tushare的行情等时间数据，一般有两个常用参数：trade_date和ts_code(交易日期和证券代码)。如果你提取部分个股的历史数据，用ts_code参数，加上开始和结束日期方便提取数据。
-如果获取所有历史数据，用trade_date来提取，股票有3800多个，需循环3800多次，每年的交易日也就才220左右，所以效率更高。积分越高可调频率会越高。
+Tushare行情等时间数据，一般有两个常用参数：trade_date和ts_code(交易日期和证券代码)。
+如果你提取部分个股的历史数据，用ts_code参数，加上开始和结束日期方便提取数据。
+如果获取所有历史数据，用trade_date，股票有3800多个，需循环3800多次，每年的交易日就220天左右，所以效率更高。
 
