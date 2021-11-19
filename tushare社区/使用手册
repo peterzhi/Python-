@@ -52,5 +52,6 @@ df = pro.trade_cal(exchange='SSE', is_open='1',
 请按照网上流程安装MySQL，以下是一些简单的mysql命令：
 查询mysql版本：mysqladmin --version
 开启mysql服务：net start xxx(数据库服务名称)
+登录mysql：mysql -u root -p，并输入密码
 
 
