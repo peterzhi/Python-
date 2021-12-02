@@ -1,0 +1,75 @@
+import datetime
+
+import tushare as ts
+
+import pymysql
+
+#建表stock_all：CREATE TABLE stock_all(
+                # state_dt varchar(20) primary key,
+                # stock_code varchar(20),
+                # open float(10),
+                # close float(10),
+                # high float(10),
+                # low float(10),
+                # vol float(10),
+                # amount integer(10),
+                # pre_close float(10),
+                # amt_change float(10),
+                # pct_change float(10),
+                # key (stock_code)
+                # );
+
+if __name__ == '__main__':
+    #设置并连接本人token
+    ts.set_token('939444dd20bfcdb58d9076ef21a3f0395d937193da1f8f000d94d20c')
+    pro = ts.pro_api()
+
+    #设置日线的始末日期，终止日为昨天
+    start_dt = '20211128'
+    time_temp = datetime.datetime.now()-datetime.timedelta(days=1)
+    end_dt = time_temp.strftime('%Y%m%d')
+
+    #建立数据库，剔除已入库部分
+    db = pymysql.connect(host='127.0.0.1', user='root', passwd='root', db='tushare_db', charset='utf8')
+    cursor = db.cursor()
+    # print('aa')
+
+    #设置获取数据的股票池
+    stock_pool = ['603912.SH','300666.SZ','300618.SZ','002049.SZ','300672.SZ']
+    total = len(stock_pool)
+
+    #循环获取单个股票的日线
+    for i in range(total):
+        try:
+            df = pro.daily(ts_code=stock_pool[i], start_date=start_dt, end_date=end_dt)
+            print(df)
+            #打印进度
+            print('Seq:' + str(i+1) + 'of' + str(total) + ' Code:' + str(stock_pool[i]))
+            c_len = df.shape[0]
+        except Exception as aa:
+            print('No DATA Code:' + str(i))
+            continue
+
+        for j in range(c_len):
+            result_0 = list(df.iloc[c_len-1-j])  #之前的df.ix[]接口不可用，替换成iloc[]
+            re = []
+
+            for k in range(len(result_0)):
+                if(str(result_0[k]) == 'nan'):
+                    re.append(-1)
+                else:
+                    re.append(result_0[k])
+
+            state_dt = (datetime.datetime.strptime(re[1], '%Y%m%d')).strftime('%Y-%m-%d')
+            try:
+                sql_insert = "INSERT INTO stock_all(state_dt,stock_code,open,close,high,low,vol,amount,pre_close,amt_change,pct_change)\
+                VALUE('%s', '%s', '%.2f', '%.2f','%.2f','%.2f','%i','%.2f','%.2f','%.2f','%.2f')"\
+                %(state_dt,str(re[0]),float(re[2]),float(re[5]),float(re[3]),float(re[4]),float(re[9]),float(re[10]),
+                float(re[6]),float(re[7]),float(re[8]))
+                cursor.execute(sql_insert)
+                db.commit()
+            except Exception as err:
+                continue
+    cursor.close()
+    db.close()
+    print('okk!')
